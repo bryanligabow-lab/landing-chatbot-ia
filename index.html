@@ -8,6 +8,22 @@
      ============================================================ -->
 <title>Asistente con IA para tu negocio · Atiende 24/7</title>
 <meta name="description" content="Un asistente con IA que responde por ti, da seguimiento solo y te muestra todo en un panel. Elige tu plan y empieza.">
+<meta name="theme-color" content="#6D4AE0">
+
+<!-- Open Graph / redes sociales. MARCADOR: si usas dominio propio, ajusta las URL absolutas -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Asistente con IA para tu negocio · Atiende 24/7">
+<meta property="og:description" content="Un asistente con IA que responde por ti, da seguimiento solo y te muestra todo en un panel. Elige tu plan y empieza.">
+<meta property="og:image" content="https://bryanligabow-lab.github.io/landing-chatbot-ia/og.png">
+<meta property="og:url" content="https://bryanligabow-lab.github.io/landing-chatbot-ia/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Asistente con IA para tu negocio · Atiende 24/7">
+<meta name="twitter:description" content="Un asistente con IA que responde por ti, da seguimiento solo y te muestra todo en un panel.">
+<meta name="twitter:image" content="https://bryanligabow-lab.github.io/landing-chatbot-ia/og.png">
+
+<!-- Favicon: glifo de marca (SVG inline, sin archivo extra). MARCADOR: cámbialo por tu logo. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%236D4AE0'/%3E%3Cpath d='M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H10l-4 4v-4H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z' fill='white'/%3E%3C/svg%3E">
 
 <!-- Fuentes (única dependencia externa, ligera) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -164,15 +180,12 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
 .typing span:nth-child(3){animation-delay:.4s}
 @keyframes blink{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
 
-/* MARCADOR IMAGEN (robot Higgsfield):
-   Para usar el robot generado, descomenta el <img> y coloca tu archivo.
-   Se posiciona como mascota junto a la tarjeta de chat.
-   <img src="robot-higgsfield.png" alt="Asistente con IA saludando" class="mascot"> */
+/* Mascota: robot asistente (PNG transparente generado con Higgsfield).
+   Asoma desde el borde inferior-derecho de la tarjeta de chat. */
 .mascot{
-  position:absolute;right:-6px;bottom:-14px;width:clamp(120px,30%,170px);
-  z-index:1;animation:float 5s ease-in-out infinite;filter:drop-shadow(0 18px 24px rgba(109,74,224,.25))
+  position:absolute;right:-22px;bottom:-46px;width:clamp(128px,38%,196px);height:auto;
+  z-index:3;animation:float 5s ease-in-out infinite;filter:drop-shadow(0 18px 26px rgba(109,74,224,.28))
 }
-.mascot-svg{position:absolute;right:-4px;bottom:-22px;width:clamp(120px,32%,168px);z-index:1;animation:float 5s ease-in-out infinite;filter:drop-shadow(0 16px 22px rgba(109,74,224,.22))}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
 /* ============================================================
@@ -406,18 +419,8 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
             <div class="bubble bubble--out">¿Tienen citas disponibles esta semana?</div>
             <div class="typing"><span></span><span></span><span></span></div>
           </div>
-          <!-- mascota (placeholder SVG; cámbiala por el robot de Higgsfield) -->
-          <svg class="mascot-svg" viewBox="0 0 120 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="60" cy="120" rx="34" ry="7" fill="#6D4AE0" opacity=".15"/>
-            <rect x="56" y="14" width="8" height="14" rx="4" fill="#8B5CF6"/><circle cx="60" cy="12" r="6" fill="#6D4AE0"/>
-            <rect x="24" y="28" width="72" height="62" rx="22" fill="url(#g1)"/>
-            <rect x="34" y="42" width="52" height="32" rx="16" fill="#fff"/>
-            <circle cx="50" cy="58" r="5.5" fill="#6D4AE0"/><circle cx="70" cy="58" r="5.5" fill="#6D4AE0"/>
-            <path d="M50 67c4 4 16 4 20 0" stroke="#8B5CF6" stroke-width="3" stroke-linecap="round"/>
-            <rect x="36" y="90" width="48" height="28" rx="14" fill="url(#g1)"/>
-            <rect x="14" y="58" width="12" height="30" rx="6" fill="#8B5CF6"/><rect x="94" y="58" width="12" height="30" rx="6" fill="#8B5CF6"/>
-            <defs><linearGradient id="g1" x1="24" y1="28" x2="96" y2="118" gradientUnits="userSpaceOnUse"><stop stop-color="#8B5CF6"/><stop offset="1" stop-color="#6D4AE0"/></linearGradient></defs>
-          </svg>
+          <!-- mascota: robot asistente generado con Higgsfield (PNG transparente) -->
+          <img src="robot.png" alt="Asistente con IA saludando" class="mascot" width="720" height="964" decoding="async">
         </div>
       </div>
     </div>
