@@ -250,16 +250,16 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
 .features .more{font-weight:700;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif}
 
 /* ============================================================
-   CONFIANZA (solo MARCADORES — prohibido inventar)
+   GARANTÍAS (afirmaciones reales)
    ============================================================ */
-.trust-grid{display:grid;gap:1.1rem;margin-top:clamp(1.8rem,3vw,2.4rem)}
-.placeholder{
-  border:2px dashed var(--lav-2);border-radius:var(--r);background:#fff;
-  padding:1.7rem;text-align:center;color:#9a90bd
-}
-.placeholder strong{display:block;color:var(--violet);font-family:'Plus Jakarta Sans',sans-serif;margin-bottom:.3rem}
-.logos-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem;align-items:center}
-.logo-slot{width:120px;height:44px;border-radius:10px;background:var(--lav);display:grid;place-items:center;color:#b3a4e6;font-size:.8rem;font-weight:600}
+.guarantees{display:grid;gap:1.1rem;margin-top:clamp(2rem,4vw,3rem);grid-template-columns:1fr}
+.guarantee{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem;box-shadow:var(--sh-sm);transition:transform .2s ease,box-shadow .2s ease}
+.guarantee:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
+.g-icon{width:48px;height:48px;border-radius:14px 14px 14px 6px;background:var(--lav);color:var(--violet);display:grid;place-items:center;margin-bottom:.9rem}
+.guarantee h3{font-size:1.02rem;margin-bottom:.3rem}
+.guarantee p{font-size:.92rem}
+@media (min-width:600px){.guarantees{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.guarantees{grid-template-columns:repeat(4,1fr)}}
 
 /* ============================================================
    FAQ (acordeón accesible)
@@ -545,32 +545,35 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
     </div>
   </section>
 
-  <!-- ===================== CONFIANZA (MARCADORES — NO inventar) ===================== -->
-  <section class="section" id="confianza">
+  <!-- ===================== GARANTÍAS (afirmaciones REALES — sin testimonios inventados) ===================== -->
+  <section class="section" id="garantias">
     <div class="wrap">
       <div class="center">
         <span class="eyebrow">Confianza</span>
-        <h2 class="reveal">Resultados reales, sin humo</h2>
-        <p class="lead reveal">Cuando tengas clientes y testimonios reales, este es su lugar.</p>
+        <h2 class="reveal">Lo que sí te garantizamos</h2>
+        <p class="lead reveal">Sin testimonios inflados ni promesas vacías. Esto es lo que cumplimos desde el primer día.</p>
       </div>
-      <div class="trust-grid">
-        <!-- MARCADOR: logos de clientes reales -->
-        <div class="placeholder reveal">
-          <strong>Logos de clientes</strong>
-          <div class="logos-row" style="margin-top:1rem">
-            <span class="logo-slot">Logo</span><span class="logo-slot">Logo</span><span class="logo-slot">Logo</span><span class="logo-slot">Logo</span>
-          </div>
-        </div>
-        <!-- MARCADOR: testimonio real (nombre + empresa). PROHIBIDO inventar. -->
-        <div class="placeholder reveal">
-          <strong>Testimonio</strong>
-          Pega aquí una reseña real de un cliente, con su nombre y negocio.
-        </div>
-        <!-- MARCADOR: garantía, si aplica a tu oferta -->
-        <div class="placeholder reveal">
-          <strong>Garantía</strong>
-          Si ofreces garantía o prueba, descríbela aquí (ej.: “cancela cuando quieras”).
-        </div>
+      <div class="guarantees">
+        <article class="guarantee reveal">
+          <span class="g-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h3>Sin permanencia</h3>
+          <p>Plan mensual. Cancela cuando quieras, sin contratos largos.</p>
+        </article>
+        <article class="guarantee reveal">
+          <span class="g-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 0 1-4 0v-.1a1.6 1.6 0 0 0-2.7-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7H3a2 2 0 0 1 0-4h.1a1.6 1.6 0 0 0 1.1-2.7l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 2.7-1.1V3a2 2 0 0 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-1.1 2.7V9a1.6 1.6 0 0 0 1.1 1.6Z"/></svg></span>
+          <h3>Mantenimiento incluido</h3>
+          <p>Dejamos tu chatbot al día y funcionando, sin costo extra.</p>
+        </article>
+        <article class="guarantee reveal">
+          <span class="g-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.2 2.2 4.8-4.8"/></svg></span>
+          <h3>Listo para atender</h3>
+          <p>Lo configuramos por ti y lo dejamos respondiendo a tus clientes.</p>
+        </article>
+        <article class="guarantee reveal">
+          <span class="g-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+          <h3>Pago seguro</h3>
+          <p>Pagas por transferencia o deUna. Nunca pedimos datos de tarjeta.</p>
+        </article>
       </div>
     </div>
   </section>
