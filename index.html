@@ -159,8 +159,9 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
 .hero .lead{margin-bottom:1.8rem}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.85rem}
 
-/* arte del hero (firma: escena de chat) */
+/* arte del hero: imagen principal del asistente */
 .hero-art{position:relative;display:grid;place-items:center;min-height:300px}
+.hero-shot{width:100%;height:auto;max-width:580px;border-radius:var(--r-lg);box-shadow:var(--sh-lg);display:block}
 .chat-card{
   width:min(100%,420px);background:#fff;border:1px solid var(--line);
   border-radius:var(--r-lg);box-shadow:var(--sh-lg);padding:1.1rem 1.1rem 1.3rem;
@@ -413,7 +414,7 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">Atención al cliente con IA</span>
+          <span class="eyebrow">Asistente Virtual Inteligente</span>
           <h1>Atiende a tus clientes 24/7, sin que se te escape ninguno.</h1>
           <p class="lead">Un asistente con IA que responde por ti al instante, da seguimiento solo y te muestra todo en un panel. Tú eliges el plan; nosotros lo dejamos andando.</p>
           <div class="hero-actions">
@@ -422,25 +423,9 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
           </div>
         </div>
 
-        <!-- ARTE DEL HERO: escena de chat (firma) + mascota.
-             Reemplaza la mascota SVG por la imagen del robot de Higgsfield (ver .mascot arriba). -->
-        <div class="hero-art" aria-hidden="true">
-          <div class="chat-card">
-            <div class="chat-top">
-              <span class="bot-avatar">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9 17h6"/></svg>
-              </span>
-              <div>
-                <div class="bot-name">Asistente IA</div>
-                <div class="bot-status">En línea</div>
-              </div>
-            </div>
-            <div class="bubble bubble--in">¡Hola! ¿En qué puedo ayudarte hoy?</div>
-            <div class="bubble bubble--out">¿Tienen citas disponibles esta semana?</div>
-            <div class="typing"><span></span><span></span><span></span></div>
-          </div>
-          <!-- mascota: robot asistente generado con Higgsfield (PNG transparente) -->
-          <img src="robot.png" alt="Asistente con IA saludando" class="mascot" width="720" height="964" decoding="async">
+        <!-- ARTE DEL HERO: imagen principal generada con Higgsfield (asistente + chat) -->
+        <div class="hero-art">
+          <img src="hero-asistente.jpg" alt="Asistente virtual inteligente: atención por chat con IA y soporte humano" class="hero-shot" width="1200" height="669" decoding="async" fetchpriority="high">
         </div>
       </div>
     </div>
