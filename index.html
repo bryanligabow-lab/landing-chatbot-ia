@@ -6,19 +6,19 @@
 <!-- ============================================================
      MARCADOR SEO: ajusta título y descripción a tu marca real
      ============================================================ -->
-<title>Asistente con IA para tu negocio · Atiende 24/7</title>
+<title>Mate AI · Asistente con IA para tu negocio · Atiende 24/7</title>
 <meta name="description" content="Un asistente con IA que responde por ti, da seguimiento solo y te muestra todo en un panel. Elige tu plan y empieza.">
 <meta name="theme-color" content="#6D4AE0">
 
 <!-- Open Graph / redes sociales. MARCADOR: si usas dominio propio, ajusta las URL absolutas -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
-<meta property="og:title" content="Asistente con IA para tu negocio · Atiende 24/7">
+<meta property="og:title" content="Mate AI · Asistente con IA para tu negocio · Atiende 24/7">
 <meta property="og:description" content="Un asistente con IA que responde por ti, da seguimiento solo y te muestra todo en un panel. Elige tu plan y empieza.">
 <meta property="og:image" content="https://bryanligabow-lab.github.io/landing-chatbot-ia/og.png">
 <meta property="og:url" content="https://bryanligabow-lab.github.io/landing-chatbot-ia/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Asistente con IA para tu negocio · Atiende 24/7">
+<meta name="twitter:title" content="Mate AI · Asistente con IA para tu negocio · Atiende 24/7">
 <meta name="twitter:description" content="Un asistente con IA que responde por ti, da seguimiento solo y te muestra todo en un panel.">
 <meta name="twitter:image" content="https://bryanligabow-lab.github.io/landing-chatbot-ia/og.png">
 
@@ -129,7 +129,7 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
   border-bottom:1px solid var(--line);
 }
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-/* MARCADOR LOGO: reemplaza el glifo y "TuMarca" por tu identidad real */
+/* MARCADOR LOGO: reemplaza el glifo y "Mate AI" por tu identidad real */
 .brand{display:flex;align-items:center;gap:.55rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.18rem}
 .brand .glyph{width:34px;height:34px;border-radius:11px;background:var(--grad);display:grid;place-items:center;color:#fff;box-shadow:var(--sh-sm)}
 .nav-links{display:none;align-items:center;gap:2rem}
@@ -151,17 +151,22 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
 /* ============================================================
    HERO
    ============================================================ */
-.hero{position:relative;background:
-   radial-gradient(120% 80% at 85% 0%,var(--lav-2) 0%,var(--lav) 38%,#fff 78%)}
-.hero .wrap{padding-block:clamp(40px,7vw,76px) clamp(48px,8vw,88px)}
-.hero-grid{display:grid;gap:clamp(32px,5vw,48px);align-items:center}
-.hero h1{margin:.6rem 0 1rem}
-.hero .lead{margin-bottom:1.8rem}
+/* HERO a fondo completo: imagen + 2 botones.
+   Móvil: imagen completa (con su titular) sobre el degradado de marca.
+   Desktop: imagen a sangre completa (cover) con los botones encima. */
+.hero{position:relative;overflow:hidden;display:flex;flex-direction:column;
+  background:linear-gradient(135deg,#3b2c8f 0%,#6D4AE0 55%,#8B5CF6 100%)}
+.hero-bg{width:100%;height:auto;display:block;z-index:0}
+.hero-overlay{position:relative;z-index:2;width:100%;padding-block:clamp(22px,5vw,40px)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.85rem}
-
-/* arte del hero: imagen principal del asistente */
-.hero-art{position:relative;display:grid;place-items:center;min-height:300px}
-.hero-shot{width:100%;height:auto;max-width:580px;border-radius:var(--r-lg);box-shadow:var(--sh-lg);display:block}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+@media (min-width:768px){
+  .hero{min-height:clamp(560px,86vh,860px);display:grid;align-items:end}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% center}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(to top,rgba(22,18,43,.5) 0%,rgba(22,18,43,.1) 42%,rgba(22,18,43,0) 62%)}
+  .hero-overlay{padding-block:clamp(28px,6vw,60px)}
+}
 .chat-card{
   width:min(100%,420px);background:#fff;border:1px solid var(--line);
   border-radius:var(--r-lg);box-shadow:var(--sh-lg);padding:1.1rem 1.1rem 1.3rem;
@@ -370,6 +375,53 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
 /* utilidad reveal (scroll) */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
+
+/* ============================================================
+   CHATBOT WIDGET (demo en vivo, responde con la base de conocimiento)
+   ============================================================ */
+.cb-launcher{position:fixed;right:18px;bottom:18px;z-index:80;width:62px;height:62px;border-radius:50%;border:0;cursor:pointer;background:var(--grad);color:#fff;box-shadow:var(--sh-lg);display:grid;place-items:center;transition:transform .2s ease}
+.cb-launcher:hover{transform:translateY(-3px)}
+.cb-launcher svg{width:28px;height:28px}
+.cb-launcher.is-hidden{display:none}
+.cb-launcher::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(139,92,246,.45);animation:cbpulse 2.4s infinite}
+@keyframes cbpulse{0%{box-shadow:0 0 0 0 rgba(139,92,246,.45)}70%{box-shadow:0 0 0 16px rgba(139,92,246,0)}100%{box-shadow:0 0 0 0 rgba(139,92,246,0)}}
+.cb-panel{position:fixed;right:18px;bottom:18px;z-index:90;width:min(384px,calc(100vw - 32px));height:min(624px,calc(100vh - 104px));background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh-lg);display:none;flex-direction:column;overflow:hidden}
+.cb-panel.is-open{display:flex}
+.cb-head{display:flex;align-items:center;gap:.65rem;padding:.85rem 1rem;background:var(--grad);color:#fff;flex:none}
+.cb-ava{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;flex:none}
+.cb-id{display:flex;flex-direction:column;line-height:1.25;flex:1;min-width:0}
+.cb-id strong{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1rem}
+.cb-status{font-size:.72rem;opacity:.92;display:flex;align-items:center;gap:.3rem}
+.cb-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#3ff0a8}
+.cb-close{width:34px;height:34px;border-radius:10px;border:0;background:rgba(255,255,255,.18);color:#fff;cursor:pointer;display:grid;place-items:center;flex:none}
+.cb-close:hover{background:rgba(255,255,255,.3)}
+.cb-body{flex:1;overflow-y:auto;padding:1rem;background:#faf8ff;display:flex;flex-direction:column;gap:.55rem}
+.cb-msg{max-width:86%;padding:.65rem .85rem;border-radius:15px;font-size:.92rem;line-height:1.5;word-wrap:break-word}
+.cb-msg.bot{background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px;align-self:flex-start;color:var(--ink)}
+.cb-msg.me{background:var(--grad);color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+.cb-msg.bot strong{color:var(--ink);font-weight:700}
+.cb-cta{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.6rem}
+.cb-cta-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--violet);color:#fff;border:0;border-radius:999px;padding:.5rem .9rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.82rem;cursor:pointer;text-decoration:none}
+.cb-cta-btn:hover{background:var(--violet-2)}
+.cb-cta-btn.wa{background:#25D366}
+.cb-cta-btn.wa:hover{background:#1ebe5b}
+.cb-typing{align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:15px;border-bottom-left-radius:5px;padding:.7rem .9rem;display:inline-flex;gap:5px}
+.cb-typing span{width:7px;height:7px;border-radius:50%;background:#b3a4e6;animation:blink 1.3s infinite}
+.cb-typing span:nth-child(2){animation-delay:.2s}
+.cb-typing span:nth-child(3){animation-delay:.4s}
+.cb-quick{display:flex;flex-wrap:wrap;gap:.4rem;padding:.55rem .75rem;border-top:1px solid var(--line);background:#fff;max-height:128px;overflow-y:auto;flex:none}
+.cb-chip{border:1px solid var(--lav-2);background:var(--lav);color:var(--violet);border-radius:999px;padding:.42rem .72rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.8rem;cursor:pointer;white-space:nowrap}
+.cb-chip:hover{background:var(--violet);color:#fff;border-color:var(--violet)}
+.cb-input{display:flex;gap:.5rem;padding:.6rem .75rem;border-top:1px solid var(--line);background:#fff;flex:none}
+.cb-input input{flex:1;min-width:0;border:1px solid var(--line);border-radius:999px;padding:.62rem .9rem;font-size:.92rem;font-family:'Inter',sans-serif;outline:none}
+.cb-input input:focus{border-color:var(--violet-2);box-shadow:0 0 0 3px rgba(139,92,246,.15)}
+.cb-send{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--grad);color:#fff;cursor:pointer;display:grid;place-items:center}
+.cb-send:hover{filter:brightness(1.05)}
+@media (max-width:480px){
+  .cb-panel{right:8px;left:8px;bottom:8px;width:auto;height:min(80vh,580px)}
+  .cb-launcher{right:14px;bottom:14px;width:58px;height:58px}
+}
+@media (prefers-reduced-motion:reduce){.cb-launcher::after{animation:none}}
 </style>
 </head>
 <body>
@@ -383,7 +435,7 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
         <span class="glyph" aria-hidden="true">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" fill="currentColor"/></svg>
         </span>
-        TuMarca
+        Mate AI
       </a>
       <div class="nav-links">
         <a href="#beneficios">Beneficios</a>
@@ -409,23 +461,15 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
 
 <main id="top">
 
-  <!-- ===================== HERO ===================== -->
+  <!-- ===================== HERO (imagen a fondo completo + 2 botones) ===================== -->
   <section class="hero">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Asistente Virtual Inteligente</span>
-          <h1>Atiende a tus clientes 24/7, sin que se te escape ninguno.</h1>
-          <p class="lead">Un asistente con IA que responde por ti al instante, da seguimiento solo y te muestra todo en un panel. Tú eliges el plan; nosotros lo dejamos andando.</p>
-          <div class="hero-actions">
-            <a href="#planes" class="btn btn--primary">Ver planes</a>
-            <a href="#como-funciona" class="btn btn--ghost">Cómo funciona</a>
-          </div>
-        </div>
-
-        <!-- ARTE DEL HERO: imagen principal generada con Higgsfield (asistente + chat) -->
-        <div class="hero-art">
-          <img src="hero-asistente.jpg" alt="Asistente virtual inteligente: atención por chat con IA y soporte humano" class="hero-shot" width="1200" height="669" decoding="async" fetchpriority="high">
+    <img src="hero-asistente.jpg" alt="Mate AI — Asistente Virtual Inteligente que atiende a tus clientes por chat las 24 horas" class="hero-bg" width="1376" height="768" decoding="async" fetchpriority="high">
+    <div class="hero-overlay">
+      <div class="wrap">
+        <h1 class="sr-only">Mate AI — Asistente Virtual Inteligente para tu negocio, atiende a tus clientes 24/7</h1>
+        <div class="hero-actions">
+          <a href="#planes" class="btn btn--primary">Ver planes</a>
+          <a href="#como-funciona" class="btn btn--ghost">Cómo funciona</a>
         </div>
       </div>
     </div>
@@ -614,7 +658,7 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
     <div class="footer-grid">
       <div>
         <!-- MARCADOR LOGO -->
-        <a href="#top" class="brand"><span class="glyph" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" fill="currentColor"/></svg></span>TuMarca</a>
+        <a href="#top" class="brand"><span class="glyph" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" fill="currentColor"/></svg></span>Mate AI</a>
         <p>Atención al cliente con IA, lista para tu negocio.</p>
       </div>
       <div class="foot-contact">
@@ -623,9 +667,34 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
       </div>
     </div>
     <!-- MARCADOR: actualiza el año y el nombre legal -->
-    <p class="foot-legal">© 2026 TuMarca. Todos los derechos reservados.</p>
+    <p class="foot-legal">© 2026 Mate AI. Todos los derechos reservados.</p>
   </div>
 </footer>
+
+<!-- ===================== CHATBOT WIDGET (demo en vivo) ===================== -->
+<button id="cbLauncher" class="cb-launcher" aria-label="Abrir chat con Mate AI" aria-expanded="false" aria-controls="cbPanel">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg>
+</button>
+<section id="cbPanel" class="cb-panel" role="dialog" aria-label="Chat con Mate AI" aria-hidden="true">
+  <header class="cb-head">
+    <span class="cb-ava" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9 17h6"/></svg></span>
+    <div class="cb-id">
+      <strong>Mate AI</strong>
+      <span class="cb-status">En línea · responde al instante</span>
+    </div>
+    <button class="cb-close" id="cbClose" aria-label="Cerrar chat">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </header>
+  <div class="cb-body" id="cbBody" aria-live="polite"></div>
+  <div class="cb-quick" id="cbQuick"></div>
+  <form class="cb-input" id="cbForm" autocomplete="off">
+    <input id="cbText" type="text" placeholder="Escribe tu pregunta…" aria-label="Escribe tu pregunta">
+    <button type="submit" class="cb-send" aria-label="Enviar mensaje">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>
+    </button>
+  </form>
+</section>
 
 <!-- ===================== MODAL DE PAGO ===================== -->
 <div class="modal" id="payModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
@@ -826,6 +895,202 @@ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
 } else {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
 }
+</script>
+<!-- ===================== CHATBOT: lógica (responde con la base de conocimiento) ===================== -->
+<script>
+(function(){
+  const WA = '593963259963';
+  const waText = encodeURIComponent('¡Hola! Vengo de la web de Mate AI y quiero hablar con una persona.');
+  const waHref = 'https://wa.me/' + WA + '?text=' + waText;
+
+  // Base de conocimiento: cada intención tiene palabras que la activan y su respuesta.
+  const KB = [
+    {id:'saludo', keys:['hola','buenas','buenos dias','buenas tardes','buenas noches','hey','que tal'],
+     a:'¡Hola! 👋 Soy el asistente de <strong>Mate AI</strong>. Te cuento sobre el chatbot que responde a tus clientes y agenda citas 24/7. ¿Qué te gustaría saber?'},
+    {id:'quehace', menu:'💬 ¿Qué hace?', keys:['que hace','que es','para que sirve','de que se trata','como me ayuda','que ofrecen','que hace el chatbot'],
+     a:'Es como un asistente virtual que nunca duerme: responde a tus clientes automáticamente las 24 horas y agenda sus citas por ti. Así no pierdes ventas por demorar en responder, mantienes tu negocio ordenado y el bot responde, recuerda y da seguimiento mientras tú te enfocas en lo demás.'},
+    {id:'horario', keys:['24 horas','de noche','madrugada','fin de semana','fines de semana','siempre','todo el dia','dia y noche'],
+     a:'Sí, funciona las <strong>24 horas, todos los días</strong>, incluso de madrugada. Siempre está encendido. Y responde aunque tu celular esté apagado o sin internet, porque funciona en la nube y no depende de tu teléfono.'},
+    {id:'precios', menu:'💲 Planes y precios', keys:['precio','precios','cuanto cuesta','planes','cuanto vale','costo','tarifas','cuanto sale','cuanto es'],
+     a:'Tenemos dos planes mensuales:<br>• <strong>Plan Texto — $30/mes:</strong> el chatbot lee y responde mensajes de texto, con panel de control y mantenimiento incluido. Ideal si estás empezando.<br>• <strong>Plan Full — $50/mes:</strong> todo lo anterior y además entiende audios e imágenes, agenda citas, envía recordatorios, hace seguimientos y se personaliza a tu negocio.<br>No hay costo de instalación: solo pagas el plan.', cta:'planes'},
+    {id:'diferencia', menu:'⚖️ Diferencia de planes', keys:['diferencia','que cambia','comparar','cual es mejor','por que cuesta mas'],
+     a:'La diferencia principal:<br>• El de <strong>$30</strong> solo lee y responde <strong>texto</strong>.<br>• El de <strong>$50</strong> entiende además <strong>audios e imágenes</strong>, <strong>agenda citas y reservas</strong>, envía <strong>recordatorios</strong>, hace <strong>seguimientos</strong> y se <strong>adapta</strong> a tu negocio.<br>Por eso el Full cuesta un poco más: hace bastante más.'},
+    {id:'recomienda', keys:['cual me recomiendan','cual me conviene','cual elijo','recomendacion','cual me sirve','cual escojo'],
+     a:'Si estás empezando o aún no recibes muchos mensajes al día, el de <strong>$30</strong> te alcanza perfecto. Si ya tienes clientes que te escriben seguido o necesitas agendar citas, te conviene el de <strong>$50</strong>. Y puedes cambiar de plan cuando quieras.'},
+    {id:'barato', keys:['mas barato','mas economico','algo mas bajo','descuento','mas barata'],
+     a:'Esos son nuestros dos planes ($30 y $50). Si necesitas algo distinto o un sistema a la medida, lo cotizamos contigo sin problema.'},
+    {id:'texto', keys:['plan texto','plan de 30','el basico','de treinta','30 dolares','plan de treinta'],
+     a:'El <strong>Plan Texto ($30/mes)</strong> incluye:<br>• Lee y responde mensajes de texto.<br>• Panel de control (dashboard).<br>• Mantenimiento y soporte incluidos.<br>• Atiende hasta <strong>25 clientes por día</strong>, con hasta <strong>25 mensajes</strong> a cada uno.<br>Trabaja solo con texto (no audios ni fotos). Ideal para negocios que están empezando.'},
+    {id:'full', menu:'⭐ Plan Full', keys:['plan full','plan de 50','el completo','de cincuenta','premium','50 dolares','plan de cincuenta'],
+     a:'El <strong>Plan Full ($50/mes)</strong> incluye todo lo del plan Texto y además:<br>• Entiende <strong>audios e imágenes</strong>, no solo texto.<br>• <strong>Agenda citas y reservas</strong> y envía <strong>recordatorios</strong>.<br>• Hace <strong>seguimientos</strong> automáticos.<br>• Se <strong>personaliza</strong> a tu negocio.<br>• <strong>Prácticamente ilimitado</strong> en clientes y mensajes.<br>Sirve para cualquier negocio que atienda por WhatsApp.', cta:'planes'},
+    {id:'capacidades', keys:['que puede hacer','funciones','envia links','toma pedidos','recomienda productos','idiomas','responde solo','catalogo'],
+     a:'El chatbot puede:<br>• Responder solo, sin tu celular encendido.<br>• Enviar links, catálogo, precios, ubicación y fotos.<br>• Tomar pedidos y recomendar tus productos.<br>• Responder en cualquier idioma (principalmente español).<br>• Usar el nombre y tono de tu marca.<br>• Pasar la conversación a ti o a tu equipo cuando haga falta.<br>Los recordatorios y seguimientos automáticos están en el plan Full.'},
+    {id:'nosabe', keys:['algo que no sabe','no tiene la respuesta','no esta cargado','no entiende','no sabe'],
+     a:'Si le preguntan algo que no tiene cargado, el bot avisa a un agente o a ti como dueño para que esa respuesta se atienda. Nada queda sin resolver.'},
+    {id:'agenda', keys:['agendar','citas','cita','reservas','turnos','calendario','horarios','reprogramar','cancelar cita'],
+     a:'Sí, el <strong>plan Full</strong> agenda citas y reservas. Funciona muy bien para clínicas, consultorios y salones:<br>• Se conecta con <strong>Google Calendar</strong> (o un calendario personalizado).<br>• El cliente elige día y hora desde el chat.<br>• Muestra horarios disponibles y evita cruces.<br>• Envía confirmación y recordatorios, y permite reprogramar o cancelar.'},
+    {id:'personaliza', keys:['personalizar','a la medida','mi logo','mis colores','conectar con mi sistema','funciones especificas','personalizacion'],
+     a:'Con el plan Full adaptamos el chatbot a tu empresa:<br>• Agregamos funciones específicas, incluso algo a la medida.<br>• Usamos tu logo, tus colores y tu información.<br>• Lo conectamos con tu sistema, tu hoja de datos o tu web.<br>La mayoría de funciones ya vienen incluidas; si es algo muy específico, lo cotizamos contigo.'},
+    {id:'dashboard', keys:['dashboard','panel','panel de control','donde veo todo','estadisticas','metricas'],
+     a:'El dashboard es tu <strong>panel de control</strong>. Desde ahí:<br>• Ves y controlas todos los chats.<br>• Ves la agenda y los seguimientos.<br>• Ves quién necesita un agente.<br>• Revisas estadísticas y métricas.<br>• Respondes manualmente cuando quieras.<br>Lo puede usar tu equipo. Funciona en celular, pero se ve mejor en computadora.'},
+    {id:'canales', menu:'📲 ¿Dónde funciona?', keys:['donde funciona','whatsapp','instagram','facebook','messenger','telegram','pagina web','mi numero','canales'],
+     a:'Funciona principalmente en <strong>WhatsApp</strong>. También en <strong>Instagram, Facebook/Messenger, Telegram</strong> y en tu <strong>página web</strong>.<br>• Puedes usar tu número actual si es <strong>WhatsApp Business</strong>; si no, te recomendamos uno nuevo.<br>• Cada plan funciona con un número/canal. Para un segundo número se contrata un plan adicional.'},
+    {id:'empezar', menu:'🚀 ¿Cómo empiezo?', keys:['como empiezo','como contrato','quiero empezar','como lo consigo','primeros pasos','empezar'],
+     a:'Es muy fácil:<br>1. Eliges tu plan y haces el pago.<br>2. Enseguida un agente te contacta para armar tu chatbot.<br>3. Nos pasas tu info y nosotros configuramos todo.<br>No necesitas saber nada técnico. Suele estar listo en unos <strong>2 días</strong> si nos das la información de inmediato. 🚀', cta:'planes'},
+    {id:'tecnico', keys:['es dificil','tecnico','programacion','lo configuran ustedes','quien carga la informacion','instalar'],
+     a:'No necesitas saber nada de tecnología ni programación. <strong>Nosotros configuramos todo</strong>: cargamos la información, hacemos los cambios y el mantenimiento. Tú solo nos das los datos de tu negocio.'},
+    {id:'mantenimiento', keys:['mantenimiento','soporte','ayuda','si algo falla','actualizaciones','cambiar precios','cambiar productos'],
+     a:'El <strong>mantenimiento está incluido</strong> en ambos planes. Cubre corrección de errores, cambios de productos/precios/descripciones y agregar o quitar cosas. Nosotros hacemos los cambios por ti. Y si necesitas <strong>atención humana, siempre está disponible</strong>: la solicitas, nos llega el aviso y te contactamos.'},
+    {id:'pago', keys:['como se paga','formas de pago','transferencia','tarjeta','factura','comprobante','cuando cobran','deuna'],
+     a:'En Ecuador aceptamos <strong>transferencias bancarias</strong> de cualquier banco y <strong>deUna</strong>.<br>• Entregamos comprobante (factura formal en proceso).<br>• El cobro es el mismo día que pagas, mes a mes. No se renueva solo: tú transfieres y te avisamos antes de que venza.<br>• Puedes subir o bajar de plan cuando quieras.', cta:'planes'},
+    {id:'contrato', keys:['contrato','permanencia','cancelar','dar de baja','me devuelven el dinero','penalizacion','reembolso'],
+     a:'<strong>Sin contrato ni permanencia:</strong> cancelas cuando quieras.<br>• Si cancelas, no pierdes lo configurado: queda en pausa hasta que reactives.<br>• Por ahora no hay penalización por cancelar.<br>• Los pagos del mes en curso no se reembolsan.'},
+    {id:'privacidad', keys:['mis datos','privacidad','seguro','quien ve las conversaciones','guardan los mensajes','seguridad'],
+     a:'Tu información y la de tus clientes está protegida. Solo ven las conversaciones quienes tengan acceso al panel: tú, tu equipo y nuestro soporte. La información está vinculada al servicio mientras está activo; al desconectar el chatbot, deja de estar disponible.'},
+    {id:'demo', keys:['funciona de verdad','ejemplos','casos','referencias','demo','demostracion','no se equivoca','prueba'],
+     a:'Sí, funciona. Si quieres ver <strong>ejemplos, casos reales o una demostración en vivo</strong>, te conecto con un agente. Antes de arrancar te reúnes con un agente que te explica cómo funcionará tu chatbot, y cualquier ajuste se corrige después. Llevamos <strong>un año</strong> en esto.', cta:'wa'},
+    {id:'objeciones', keys:['suena a robot','parece robot','reemplaza empleados','molesta a mis clientes','mejor chatgpt','chatgpt','robotico'],
+     a:'• <strong>¿Suena a robot?</strong> El tono se ajusta a tu gusto: puede ser tan natural y cercano como quieras.<br>• <strong>¿Reemplaza a mi personal?</strong> No, los apoya: el bot responde rápido y ordena, y tu equipo se enfoca en lo importante.<br>• <strong>¿No me conviene ChatGPT?</strong> ChatGPT solo no hace esto. Tu chatbot se construye sobre la tecnología (API) de OpenAI y se configura a la medida de tu negocio.'},
+    {id:'negocio', keys:['clinica','restaurante','tienda','salon','barberia','inmobiliaria','abogados','mi negocio','sirve para'],
+     a:'Sirve para cualquier negocio que atienda por WhatsApp: <strong>clínicas y consultorios, restaurantes, tiendas, salones y barberías, inmobiliarias, firmas de abogados</strong> y más.'},
+    {id:'contacto', keys:['donde estan','ubicacion','contacto','su numero','reunion','llamada','mi ciudad','donde quedan'],
+     a:'Estamos en <strong>Piñas, El Oro, Ecuador</strong>, y trabajamos con todo Ecuador. Puedes agendar una llamada o reunión y hablar con una persona real cuando quieras.', cta:'wa'},
+    {id:'crecimiento', keys:['agregar funciones','subir de plan','si crezco','mas mensajes','pausar el servicio','pausar'],
+     a:'Sí, puedes agregar funciones más adelante y pasar del plan de $30 al de $50 cuando quieras. Si tu negocio crece, te avisaremos si hiciera falta ajustar algo; por ahora el plan Full es prácticamente ilimitado. También puedes pausar el servicio cuando lo necesites.'},
+    {id:'contratar', menu:'✅ Contratar / pagar', keys:['contratar','quiero contratar','pagar','comprar','lo quiero'],
+     a:'¡Genial! 🎉 Elige tu plan y paga por <strong>transferencia o deUna</strong>; luego nos envías el comprobante por WhatsApp y activamos tu chatbot (suele estar listo en ~2 días).', cta:'planes'},
+    {id:'persona', menu:'🧑‍💼 Hablar con persona', keys:['hablar con una persona','asesor','persona real','agente','humano','hablar con alguien','un asesor'],
+     a:'¡Claro! Te conecto con una persona de nuestro equipo. Toca el botón y escríbenos por WhatsApp con tu nombre y tu consulta. 👇', cta:'wa'}
+  ];
+
+  const MENU = ['quehace','precios','diferencia','full','canales','empezar','contratar','persona'];
+  const byId = {}; KB.forEach(k => byId[k.id] = k);
+
+  const launcher = document.getElementById('cbLauncher');
+  const panel    = document.getElementById('cbPanel');
+  const closeBtn = document.getElementById('cbClose');
+  const body     = document.getElementById('cbBody');
+  const quick    = document.getElementById('cbQuick');
+  const form     = document.getElementById('cbForm');
+  const input    = document.getElementById('cbText');
+  let   started  = false;
+
+  const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+
+  function match(text){
+    const t = norm(text);
+    let best = null, score = 0;
+    for(const it of KB){
+      let s = 0;
+      for(const k of it.keys){ if(t.includes(norm(k))) s += k.length; }
+      if(s > score){ score = s; best = it; }
+    }
+    return score > 0 ? best : null;
+  }
+
+  function scrollDown(){ body.scrollTop = body.scrollHeight; }
+
+  function addMsg(html, who){
+    const el = document.createElement('div');
+    el.className = 'cb-msg ' + who;
+    el.innerHTML = html;
+    body.appendChild(el);
+    scrollDown();
+    return el;
+  }
+
+  function ctaHTML(type){
+    if(type === 'planes') return '<div class="cb-cta"><button type="button" class="cb-cta-btn" data-cta="planes">Ver planes</button></div>';
+    if(type === 'wa') return '<div class="cb-cta"><a class="cb-cta-btn wa" href="' + waHref + '" target="_blank" rel="noopener">Escribir por WhatsApp</a></div>';
+    return '';
+  }
+
+  function botSay(intent){
+    const el = document.createElement('div');
+    el.className = 'cb-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    body.appendChild(el); scrollDown();
+    setTimeout(() => {
+      el.remove();
+      addMsg(intent.a + (intent.cta ? ctaHTML(intent.cta) : ''), 'bot');
+      renderQuick(false);
+    }, 480);
+  }
+
+  function renderQuick(full){
+    quick.innerHTML = '';
+    const ids = full ? MENU : ['precios','empezar','persona'];
+    ids.forEach(id => {
+      const it = byId[id];
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'cb-chip';
+      chip.textContent = it.menu || it.id;
+      chip.addEventListener('click', () => handle(it.menu || it.id, it));
+      quick.appendChild(chip);
+    });
+    if(!full){
+      const m = document.createElement('button');
+      m.type = 'button'; m.className = 'cb-chip'; m.textContent = '📋 Menú';
+      m.addEventListener('click', () => renderQuick(true));
+      quick.appendChild(m);
+    }
+  }
+
+  function handle(userText, forcedIntent){
+    addMsg(userText.replace(/^[^\wÁÉÍÓÚáéíóúñ¿]+/, ''), 'me');
+    const intent = forcedIntent || match(userText);
+    if(intent){ botSay(intent); }
+    else {
+      const el = document.createElement('div'); el.className='cb-typing';
+      el.innerHTML='<span></span><span></span><span></span>'; body.appendChild(el); scrollDown();
+      setTimeout(() => { el.remove();
+        addMsg('Disculpa, no estoy seguro de haber entendido 🤔. Elige una opción del menú o toca <strong>Hablar con persona</strong>.' + ctaHTML('wa'), 'bot');
+        renderQuick(true);
+      }, 480);
+    }
+  }
+
+  function start(){
+    if(started) return; started = true;
+    addMsg('¡Hola! 👋 Soy el asistente de <strong>Mate AI</strong>. Te ayudo con info sobre el chatbot que responde a tus clientes y agenda citas 24/7. ¿Qué te gustaría saber?', 'bot');
+    renderQuick(true);
+  }
+
+  function openChat(){
+    panel.classList.add('is-open');
+    panel.setAttribute('aria-hidden','false');
+    launcher.classList.add('is-hidden');
+    launcher.setAttribute('aria-expanded','true');
+    start();
+    setTimeout(() => input.focus(), 80);
+  }
+  function closeChat(){
+    panel.classList.remove('is-open');
+    panel.setAttribute('aria-hidden','true');
+    launcher.classList.remove('is-hidden');
+    launcher.setAttribute('aria-expanded','false');
+    launcher.focus();
+  }
+
+  launcher.addEventListener('click', openChat);
+  closeBtn.addEventListener('click', closeChat);
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && panel.classList.contains('is-open')) closeChat(); });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const v = input.value.trim();
+    if(!v) return;
+    input.value = '';
+    handle(v);
+  });
+
+  // CTA "Ver planes" dentro del chat → cierra y baja a planes
+  body.addEventListener('click', e => {
+    const b = e.target.closest('[data-cta="planes"]');
+    if(b){ closeChat(); const p = document.getElementById('planes'); if(p) p.scrollIntoView({behavior:'smooth'}); }
+  });
+})();
 </script>
 </body>
 </html>
