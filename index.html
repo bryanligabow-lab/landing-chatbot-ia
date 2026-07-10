@@ -457,6 +457,20 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
 }
 
 /* ============================================================
+   CLIENTES (prueba social real)
+   ============================================================ */
+.clients{display:grid;gap:1.1rem;grid-template-columns:1fr;margin-top:clamp(1.8rem,3vw,2.6rem)}
+.client{display:flex;flex-direction:column;align-items:center;text-align:center;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.5rem 1.2rem;box-shadow:var(--sh-sm);transition:transform .2s ease,box-shadow .2s ease}
+.client:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
+.client-logo{height:104px;display:grid;place-items:center;margin-bottom:1rem}
+.client-logo img{max-width:210px;max-height:104px;width:auto;height:auto;object-fit:contain;border-radius:12px}
+.client-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.05rem;color:var(--ink);line-height:1.15}
+.client-tag{font-size:.85rem;color:var(--graphite);margin-top:.2rem;margin-bottom:.85rem}
+.client-wa{display:inline-flex;align-items:center;gap:.45rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.95rem;color:#128C4B}
+.client-wa:hover{color:#0e6e3b;text-decoration:underline}
+@media (min-width:768px){.clients{grid-template-columns:repeat(3,1fr)}}
+
+/* ============================================================
    CHATBOT WIDGET (demo en vivo, responde con la base de conocimiento)
    ============================================================ */
 .cb-launcher{position:fixed;right:18px;bottom:18px;z-index:80;width:62px;height:62px;border-radius:50%;border:0;cursor:pointer;background:var(--grad);color:#fff;box-shadow:var(--sh-lg);display:grid;place-items:center;transition:transform .2s ease}
@@ -733,6 +747,46 @@ section[id]{scroll-margin-top:84px} /* compensa header fijo en anclas */
           <span class="g-icon" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
           <h3>Pago seguro</h3>
           <p>Pagas por transferencia o deUna. Nunca pedimos datos de tarjeta.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CLIENTES (prueba social real) ===================== -->
+  <section class="section" id="clientes">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">Clientes</span>
+        <h2 class="reveal">Negocios que ya confían en Mate AI</h2>
+        <p class="lead reveal">Empresas reales que atienden a sus clientes con Mate AI. Escríbeles y compruébalo tú mismo.</p>
+      </div>
+      <div class="clients">
+        <article class="client reveal">
+          <div class="client-logo"><img src="cliente-allin.jpg" alt="Logo de All-In-Constructions S.A.S" width="210" height="104" loading="lazy"></div>
+          <div class="client-name">All-In-Constructions S.A.S</div>
+          <div class="client-tag">Constructora</div>
+          <a class="client-wa" href="https://wa.me/593967714119" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.9A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.6-1.4L.5 23.5ZM6.7 19.9l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9ZM17.5 14.3c-.1-.2-.4-.3-.8-.5s-1.6-.8-1.9-.9-.5-.1-.7.2-.8.9-1 1.1-.4.2-.7.1a7.7 7.7 0 0 1-2.3-1.4 8.6 8.6 0 0 1-1.6-2c-.2-.3 0-.4.1-.6l.5-.5.3-.5a.6.6 0 0 0 0-.5c0-.2-.7-1.7-1-2.3s-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1.1 2.5 5.9 5.9 0 0 0 1.3 3.2 13.6 13.6 0 0 0 5.2 4.6c.7.3 1.3.5 1.7.6a4.2 4.2 0 0 0 1.9.1c.6-.1 1.7-.7 2-1.4s.3-1.2.2-1.3Z"/></svg>
+            +593 96 771 4119
+          </a>
+        </article>
+        <article class="client reveal">
+          <div class="client-logo"><img src="cliente-ceragem.jpg" alt="Logo de CERAGEM San Rafael" width="210" height="104" loading="lazy"></div>
+          <div class="client-name">CERAGEM</div>
+          <div class="client-tag">San Rafael · Valle de los Chillos</div>
+          <a class="client-wa" href="https://wa.me/593982027436" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.9A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.6-1.4L.5 23.5ZM6.7 19.9l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9ZM17.5 14.3c-.1-.2-.4-.3-.8-.5s-1.6-.8-1.9-.9-.5-.1-.7.2-.8.9-1 1.1-.4.2-.7.1a7.7 7.7 0 0 1-2.3-1.4 8.6 8.6 0 0 1-1.6-2c-.2-.3 0-.4.1-.6l.5-.5.3-.5a.6.6 0 0 0 0-.5c0-.2-.7-1.7-1-2.3s-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1.1 2.5 5.9 5.9 0 0 0 1.3 3.2 13.6 13.6 0 0 0 5.2 4.6c.7.3 1.3.5 1.7.6a4.2 4.2 0 0 0 1.9.1c.6-.1 1.7-.7 2-1.4s.3-1.2.2-1.3Z"/></svg>
+            +593 98 202 7436
+          </a>
+        </article>
+        <article class="client reveal">
+          <div class="client-logo"><img src="cliente-especialista.jpg" alt="Logo de Centro Especialista Quito" width="210" height="104" loading="lazy"></div>
+          <div class="client-name">Centro Especialista Quito</div>
+          <div class="client-tag">Quito</div>
+          <a class="client-wa" href="https://wa.me/593992712686" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.5 23.5l1.6-5.9A11.4 11.4 0 1 1 12 23.4a11.5 11.5 0 0 1-5.6-1.4L.5 23.5ZM6.7 19.9l.4.2a9.5 9.5 0 1 0-3.2-3.2l.2.4-1 3.5 3.6-.9ZM17.5 14.3c-.1-.2-.4-.3-.8-.5s-1.6-.8-1.9-.9-.5-.1-.7.2-.8.9-1 1.1-.4.2-.7.1a7.7 7.7 0 0 1-2.3-1.4 8.6 8.6 0 0 1-1.6-2c-.2-.3 0-.4.1-.6l.5-.5.3-.5a.6.6 0 0 0 0-.5c0-.2-.7-1.7-1-2.3s-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1.1 2.5 5.9 5.9 0 0 0 1.3 3.2 13.6 13.6 0 0 0 5.2 4.6c.7.3 1.3.5 1.7.6a4.2 4.2 0 0 0 1.9.1c.6-.1 1.7-.7 2-1.4s.3-1.2.2-1.3Z"/></svg>
+            +593 99 271 2686
+          </a>
         </article>
       </div>
     </div>
